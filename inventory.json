@@ -1,0 +1,66 @@
+{
+    "clients": [
+        {
+            "id": "client-001",
+            "name": "Client A",
+            "contactEmail": "email1",
+            "assets": [
+                {
+                    "vendor": "fortinet",
+                    "product": "fortios",
+                    "version": "7.2.4"
+                },
+                {
+                    "vendor": "microsoft",
+                    "product": "windows_server_2019",
+                    "version": "10.0.17763.5000"
+                },
+                {
+                    "vendor": "vmware",
+                    "product": "esxi",
+                    "version": "7.0"
+                }
+            ]
+        },
+        {
+            "id": "client-002",
+            "name": "Client B",
+            "contactEmail": "email2",
+            "assets": [
+                {
+                    "vendor": "paloaltonetworks",
+                    "product": "pan-os",
+                    "version": "12.2.4"
+                },
+                {
+                    "vendor": "canonical",
+                    "product": "ubuntu_linux",
+                    "version": "24.04"
+                }
+            ]
+
+        },
+        {
+            "id": "client-003",
+            "name": "Client C",
+            "contactEmail": "email3",
+            "assets": [
+                {
+                    "vendor": "paloaltonetworks",
+                    "product": "pan-os",
+                    "version": "10.2.4"
+                },
+                {
+                    "vendor": "fedoraproject",
+                    "product": "fedora",
+                    "version": "43"
+                },
+                {
+                    "vendor": "vmware",
+                    "product": "esxi",
+                    "version": "7.0"
+                }
+            ]
+        }
+    ]
+}

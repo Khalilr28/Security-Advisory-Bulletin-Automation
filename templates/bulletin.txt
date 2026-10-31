@@ -1,0 +1,20 @@
+SECURITY ADVISORY BULLETIN
+{{ clientName }} - {{ today }}
+
+{{ items|length }} item(s) affect technology in your environment.
+{% if urgentCount %}{{ urgentCount }} actively exploited: act on these first.
+{% endif %}
+{% for m in items %}
+[{{ m.priority }}] {{ m.cveId }} (CVSS {{ m.cvssScore or "n/a" }})
+Asset: {{ m.asset }}
+{{ m.shortDescription }}
+Action: {{ m.action }}
+{% if not m.confirmed %}Note: the advisory does not specify versions precisely. Please verify.
+{% if m.indirect %}Note: the advisory text does not name this product directly, but NVD lists it as affected (for example through a bundled component). Please verify with the vendor advisory.
+{% endif %}
+{% endif %}{% for link in m.patchLinks %}Reference: {{ link }}
+{% endfor %}
+{% endfor %}
+Matching is based on product and version data published by NVD and CISA KEV.
+Actual exposure depends on enabled features and configuration.
+Please confirm with the vendor advisory.

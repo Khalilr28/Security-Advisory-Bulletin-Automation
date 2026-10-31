@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; max-width: 640px; margin: auto; color: #222;">
+  {% set colors = {"URGENT": "#b91c1c", "CRITICAL": "#c2410c", "HIGH": "#a16207"} %}
+  <h2>Security Advisory Bulletin</h2>
+  <p>{{ clientName }} &middot; {{ today }}</p>
+  <p>{{ items|length }} item(s) affect technology in your environment.
+  {% if urgentCount %}<strong>{{ urgentCount }} actively exploited: act on these first.</strong>{% endif %}</p>
+
+  {% for m in items %}
+  <div style="border-left: 5px solid {{ colors[m.priority] }}; padding: 8px 12px; margin: 16px 0; background: #f7f7f7;">
+    <strong style="color: {{ colors[m.priority] }};">{{ m.priority }}</strong>
+    &nbsp;{{ m.cveId }} &middot; CVSS {{ m.cvssScore or "n/a" }}<br>
+    <em>Affected asset: {{ m.asset }}</em>
+    <p>{{ m.shortDescription }}</p>
+    <p><strong>Recommended action:</strong> {{ m.action }}</p>
+    {% if not m.confirmed %}<p><em>The advisory does not specify versions precisely. Please verify.</em></p>{% endif %}
+    {% if m.indirect %}<p><em>Note: the advisory text does not name this product directly, but NVD lists it as affected (for example through a bundled component). Please verify with the vendor advisory.</em></p>{% endif %}
+    {% for link in m.patchLinks %}<a href="{{ link }}">{{ link }}</a><br>{% endfor %}
+  </div>
+  {% endfor %}
+
+  <p style="font-size: 12px; color: #666;">
+    Matching is based on product and version data published by NVD and CISA KEV.
+    Actual exposure depends on enabled features and configuration. Please confirm with the vendor advisory.
+  </p>
+</body>
+</html>
